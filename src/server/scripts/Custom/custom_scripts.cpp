@@ -50,7 +50,7 @@ public:
         }
     }
 
-    void OnDuelEnd(Player* winner, Player* loser, DuelCompleteType type)
+    void OnDuelEnd(Player* winner, Player* loser, DuelCompleteType /*type*/)
     {
         // reset cooldowns in Elewynn Forest and Durotar
         if (winner->GetAreaId() == (45) || winner->GetAreaId() == (45)) // Edit area with the wanted areaid here
