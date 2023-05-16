@@ -499,6 +499,14 @@ void BattlegroundWS::EventPlayerClickedOnFlag(Player* player, GameObject* target
             PlaySoundToAll(BG_WS_SOUND_FLAG_RETURNED);
             UpdatePlayerScore(player, SCORE_FLAG_RETURNS, 1);
             _bothFlagsKept = false;
+
+            if (Player* hordeFlagCarrier = ObjectAccessor::GetPlayer(GetBgMap(), GetFlagPickerGUID(TEAM_HORDE)))
+            {
+                if (hordeFlagCarrier->IsInAreaTriggerRadius(sAreaTriggerStore.LookupEntry(3646)))
+                {
+                    EventPlayerCapturedFlag(hordeFlagCarrier);
+                }
+            }
         }
         else
         {
@@ -531,6 +539,14 @@ void BattlegroundWS::EventPlayerClickedOnFlag(Player* player, GameObject* target
             PlaySoundToAll(BG_WS_SOUND_FLAG_RETURNED);
             UpdatePlayerScore(player, SCORE_FLAG_RETURNS, 1);
             _bothFlagsKept = false;
+
+            if (Player* allianceFlagCarrier = ObjectAccessor::GetPlayer(GetBgMap(), GetFlagPickerGUID(TEAM_ALLIANCE)))
+            {
+                if (allianceFlagCarrier->IsInAreaTriggerRadius(sAreaTriggerStore.LookupEntry(3647)))
+                {
+                    EventPlayerCapturedFlag(allianceFlagCarrier);
+                }
+            }
         }
         else
         {
